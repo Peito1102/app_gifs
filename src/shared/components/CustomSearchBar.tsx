@@ -23,7 +23,6 @@ export const CustomSearchBar = ({ placeHolder, buttonText, onSearch }: CustomSea
 
   return (
     <div className="search-container">
-      <h1>{busqueda}</h1>
       <input type="text" 
         placeholder={placeHolder}
         value={busqueda}

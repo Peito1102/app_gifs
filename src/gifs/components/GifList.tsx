@@ -1,4 +1,5 @@
-import type { Gif } from "../mock-data/gifs.mock"
+import type { Gif } from "../actions/gif.interface"
+
 
 interface GifListProps {
   gifs?: Gif[]
