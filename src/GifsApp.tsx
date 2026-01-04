@@ -5,30 +5,11 @@ import { CustomHeader } from './shared/components/CustomHeader'
 import { CustomSearchBar } from './shared/components/CustomSearchBar'
 import { PreviousSearches } from './gifs/components/PreviousSearches'
 import { GifList } from './gifs/components/GifList'
-import { useState } from 'react'
-import { getGifsByQuery } from './gifs/actions/get-gifs-query'
-import type { Gif } from './gifs/actions/gif.interface'
+import { useGifs } from './gifs/hooks/useGifs'
 
 export const GifsApp = () => {
 
-  const [previousTerms, setpreviousTerms] = useState<string[]>([]);
-
-  const [gifs, setgifs] = useState<Gif[]>([]);
-
-  const handleTermClicked = (term: string) => {
-    console.log(`Term clicked: ${term}`);
-  }
-
-  const HandleSearch = async(busqueda: string) => {
-    busqueda = busqueda.trim().toLowerCase()
-    if (busqueda === '') return;
-    if (previousTerms.includes(busqueda)) return;
-    setpreviousTerms([busqueda, ...previousTerms].splice(0,7));
-
-    const myGifs = await getGifsByQuery(busqueda);
-
-    setgifs(myGifs)
-  }
+  const { previousTerms, gifs, HandleSearch, handleTermClicked} = useGifs();
 
   return (
     <>
